@@ -197,13 +197,13 @@ public class SMSegment: SMBasicSegment {
     // MARK: Update Frame
     private func resetContentFrame() {
         
-        var distanceBetween: CGFloat = 0.0
+//        var distanceBetween: CGFloat = 0.0
         var imageViewFrame = CGRectMake(0.0, self.verticalMargin, 0.0, self.frame.size.height - self.verticalMargin*2)
         
         if self.onSelectionImage != nil || self.offSelectionImage != nil {
             // Set imageView as a square
             imageViewFrame.size.width = self.frame.size.height - self.verticalMargin*2
-            distanceBetween = 5.0
+//            distanceBetween = 5.0
         }
         
         // If there's no text, align imageView centred

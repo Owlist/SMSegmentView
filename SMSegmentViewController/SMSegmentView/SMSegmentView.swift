@@ -181,13 +181,13 @@ public class SMSegmentView: SMBasicSegmentView {
         return segment
     }
     
-    public func addSegmentWithTitle(title: String?, subtitle: String?, offSelectionImage: UIImage?) -> SMSegment {
+    public func addSegmentWithTitle(title: String?, subtitle: String?, offSelectionImage: UIImage?, offSelectionColor: UIColor?) -> SMSegment {
         
-        let segment = SMSegment(verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: self.segmentOffSelectionColour, onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont, subtitleFont: self.segmentSubtitleFont)
+        let segment = SMSegment(verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: offSelectionColor!, onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont, subtitleFont: self.segmentSubtitleFont)
         
         segment.title = title
-//        segment.subtitle = subtitle
-//        segment.onSelectionImage = onSelectionImage
+        segment.subtitle = subtitle
+        segment.onSelectionImage = nil
         segment.offSelectionImage = offSelectionImage
         
         super.addSegment(segment)
