@@ -144,7 +144,9 @@ public class SMSegment: SMBasicSegment {
         self.setupUIElements()
     }
     
-    
+    public func setupColors() {
+        self.backgroundColor = self.index % 2 == 0 ? self.offSelectionColour : self.offSelectionColour2
+    }
     
     func setupUIElements() {
         

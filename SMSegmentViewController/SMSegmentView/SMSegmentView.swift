@@ -67,7 +67,6 @@ public class SMSegmentView: SMBasicSegmentView {
         }
     }
 
-    
     // Segment Title Text Colour & Font
     @IBInspectable public var segmentOnSelectionTextColour: UIColor = UIColor.whiteColor() {
         didSet {
