@@ -229,12 +229,16 @@ public class SMSegment: SMBasicSegment {
             self.titleLabel.textColor = self.onSelectionTextColour
             self.subtitleLabel.textColor = self.onSelectionTextColour
             self.imageView.image = nil
+            self.titleLabel.hidden = false
+            self.subtitleLabel.hidden = false
         }
         else {
             self.backgroundColor = self.offSelectionColour
             self.titleLabel.textColor = self.offSelectionTextColour
             self.subtitleLabel.textColor = self.offSelectionTextColour
             self.imageView.image = self.offSelectionImage
+            self.titleLabel.hidden = true
+            self.subtitleLabel.hidden = true
         }
     }
     
