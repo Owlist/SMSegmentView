@@ -183,11 +183,13 @@ public class SMSegment: SMBasicSegment {
         self.titleLabel.textAlignment = NSTextAlignment.Center
         self.titleLabel.font = self.titleFont
         self.titleLabel.textColor = self.offSelectionTextColour
+        self.titleLabel.hidden = true
         self.addSubview(self.titleLabel)
         
         self.subtitleLabel.textAlignment = NSTextAlignment.Center
         self.subtitleLabel.font = self.subtitleFont
         self.subtitleLabel.textColor = self.offSelectionTextColour
+        self.subtitleLabel.hidden = true
         self.addSubview(self.subtitleLabel)
     }
     
