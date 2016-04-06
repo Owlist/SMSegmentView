@@ -221,9 +221,9 @@ public class SMSegment: SMBasicSegment {
         
         self.imageView.frame = imageViewFrame
         
-        self.titleLabel.frame = CGRectMake(0, self.frame.size.height/4, self.labelWidth, self.frame.size.height/2)
+        self.titleLabel.frame = CGRectMake(0, self.frame.size.height/4, self.frame.size.width, self.frame.size.height/2)
         
-        self.subtitleLabel.frame = CGRectMake(0, 0.75 * self.frame.size.height, self.labelWidth, self.frame.size.height/4)
+        self.subtitleLabel.frame = CGRectMake(0, 0.75 * self.frame.size.height, self.frame.size.width, self.frame.size.height/4)
         
     }
     
