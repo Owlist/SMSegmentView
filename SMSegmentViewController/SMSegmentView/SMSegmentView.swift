@@ -79,7 +79,15 @@ public class SMSegmentView: SMBasicSegmentView {
             }
         }
     }
-        
+    
+    @IBInspectable public var segmentSubtitleFont: UIFont = UIFont.systemFontOfSize(14.0) {
+        didSet {
+            for segment in self.segments as! [SMSegment] {
+                segment.subtitleFont = self.segmentSubtitleFont
+            }
+        }
+    }
+    
     required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -136,13 +144,20 @@ public class SMSegmentView: SMBasicSegmentView {
             self.segmentTitleFont = UIFont.systemFontOfSize(17.0)
         }
         
+        if let subtitleFont = segmentProperties?[keySegmentSubtitleFont] as? UIFont {
+            self.segmentSubtitleFont = subtitleFont
+        }
+        else {
+            self.segmentSubtitleFont = UIFont.systemFontOfSize(14.0)
+        }
+        
         self.backgroundColor = UIColor.clearColor()
         self.layer.masksToBounds = true
     }
     
     public func addSegmentWithTitle(title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?) -> SMSegment {
         
-        let segment = SMSegment(verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: self.segmentOffSelectionColour, onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont)
+        let segment = SMSegment(verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: self.segmentOffSelectionColour, onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont, subtitleFont: self.segmentSubtitleFont)
         
         segment.title = title
         segment.onSelectionImage = onSelectionImage
@@ -155,7 +170,7 @@ public class SMSegmentView: SMBasicSegmentView {
     
     public func addSegmentWithTitle(title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?, offSelectionColor: UIColor?) -> SMSegment {
         
-        let segment = SMSegment(verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: offSelectionColor!, onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont)
+        let segment = SMSegment(verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: offSelectionColor!, onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont, subtitleFont: self.segmentSubtitleFont)
         
         segment.title = title
         segment.onSelectionImage = onSelectionImage
@@ -168,7 +183,7 @@ public class SMSegmentView: SMBasicSegmentView {
     
     public func addSegmentWithTitle(title: String?, subtitle: String?, offSelectionImage: UIImage?) -> SMSegment {
         
-        let segment = SMSegment(verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: self.segmentOffSelectionColour, onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont)
+        let segment = SMSegment(verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: self.segmentOffSelectionColour, onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont, subtitleFont: self.segmentSubtitleFont)
         
         segment.title = title
 //        segment.subtitle = subtitle
