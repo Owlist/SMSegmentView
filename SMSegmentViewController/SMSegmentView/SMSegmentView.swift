@@ -17,8 +17,6 @@ let keyContentVerticalMargin = "VerticalMargin"
 // The colour when the segment is under selected/unselected
 let keySegmentOnSelectionColour = "OnSelectionBackgroundColour"
 let keySegmentOffSelectionColour = "OffSelectionBackgroundColour"
-let keySegmentOffSelectionColour2 = "OffSelectionBackgroundColour2"
-
 
 // The colour of the text in the segment for the segment is under selected/unselected
 let keySegmentOnSelectionTextColour = "OnSelectionTextColour"
@@ -59,14 +57,6 @@ public class SMSegmentView: SMBasicSegmentView {
         }
     }
     
-    @IBInspectable public var segmentOffSelectionColour2: UIColor = UIColor.whiteColor() {
-        didSet {
-            for segment in self.segments as! [SMSegment] {
-                segment.offSelectionColour2 = self.segmentOffSelectionColour2
-            }
-        }
-    }
-
     // Segment Title Text Colour & Font
     @IBInspectable public var segmentOnSelectionTextColour: UIColor = UIColor.whiteColor() {
         didSet {
@@ -125,13 +115,6 @@ public class SMSegmentView: SMBasicSegmentView {
             self.segmentOffSelectionColour = UIColor.whiteColor()
         }
         
-        if let offSelectionColour2 = segmentProperties?[keySegmentOffSelectionColour2] as? UIColor {
-            self.segmentOffSelectionColour2 = offSelectionColour2
-        }
-        else {
-            self.segmentOffSelectionColour2 = UIColor.whiteColor()
-        }
-        
         if let onSelectionTextColour = segmentProperties?[keySegmentOnSelectionTextColour] as? UIColor {
             self.segmentOnSelectionTextColour = onSelectionTextColour
         }
@@ -159,7 +142,20 @@ public class SMSegmentView: SMBasicSegmentView {
     
     public func addSegmentWithTitle(title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?) -> SMSegment {
         
-        let segment = SMSegment(verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: self.segmentOffSelectionColour, offSelectionColour2: self.segmentOffSelectionColour2,onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont)
+        let segment = SMSegment(verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: self.segmentOffSelectionColour, onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont)
+        
+        segment.title = title
+        segment.onSelectionImage = onSelectionImage
+        segment.offSelectionImage = offSelectionImage
+        
+        super.addSegment(segment)
+        
+        return segment
+    }
+    
+    public func addSegmentWithTitle(title: String?, onSelectionImage: UIImage?, offSelectionImage: UIImage?, offSelectionColor: UIColor?) -> SMSegment {
+        
+        let segment = SMSegment(verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: offSelectionColor!, onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont)
         
         segment.title = title
         segment.onSelectionImage = onSelectionImage
@@ -172,7 +168,7 @@ public class SMSegmentView: SMBasicSegmentView {
     
     public func addSegmentWithTitle(title: String?, subtitle: String?, offSelectionImage: UIImage?) -> SMSegment {
         
-        let segment = SMSegment(verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: self.segmentOffSelectionColour, offSelectionColour2: self.segmentOffSelectionColour2,onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont)
+        let segment = SMSegment(verticalMargin: self.segmentVerticalMargin, onSelectionColour: self.segmentOnSelectionColour, offSelectionColour: self.segmentOffSelectionColour, onSelectionTextColour: self.segmentOnSelectionTextColour, offSelectionTextColour: self.segmentOffSelectionTextColour, titleFont: self.segmentTitleFont)
         
         segment.title = title
 //        segment.subtitle = subtitle
