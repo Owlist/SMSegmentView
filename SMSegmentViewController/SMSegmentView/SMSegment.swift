@@ -32,8 +32,15 @@ public class SMSegment: SMBasicSegment {
     }
     public var offSelectionColour: UIColor = UIColor.whiteColor() {
         didSet {
-            if self.isSelected == false {
+            if self.isSelected == false && self.index % 2 == 0{
                 self.backgroundColor = self.offSelectionColour
+            }
+        }
+    }
+    public var offSelectionColour2: UIColor = UIColor.whiteColor() {
+        didSet {
+            if self.isSelected == false && self.index % 2 != 0{
+                self.backgroundColor = self.offSelectionColour2
             }
         }
     }
@@ -123,11 +130,12 @@ public class SMSegment: SMBasicSegment {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public init(verticalMargin: CGFloat, onSelectionColour: UIColor, offSelectionColour: UIColor, onSelectionTextColour: UIColor, offSelectionTextColour: UIColor, titleFont: UIFont) {
+    public init(verticalMargin: CGFloat, onSelectionColour: UIColor, offSelectionColour: UIColor, offSelectionColour2: UIColor, onSelectionTextColour: UIColor, offSelectionTextColour: UIColor, titleFont: UIFont) {
         
         self.verticalMargin = verticalMargin
         self.onSelectionColour = onSelectionColour
         self.offSelectionColour = offSelectionColour
+        self.offSelectionColour2 = offSelectionColour2
         self.onSelectionTextColour = onSelectionTextColour
         self.offSelectionTextColour = offSelectionTextColour
         self.titleFont = titleFont
@@ -140,7 +148,7 @@ public class SMSegment: SMBasicSegment {
     
     func setupUIElements() {
         
-        self.backgroundColor = self.offSelectionColour
+        self.backgroundColor = self.index % 2 == 0 ? self.offSelectionColour : self.offSelectionColour2
         
         self.imageView.contentMode = UIViewContentMode.ScaleAspectFit
         self.addSubview(self.imageView)
@@ -187,7 +195,7 @@ public class SMSegment: SMBasicSegment {
             self.imageView.image = self.onSelectionImage
         }
         else {
-            self.backgroundColor = self.offSelectionColour
+            self.backgroundColor = self.index % 2 == 0 ? self.offSelectionColour : self.offSelectionColour2
             self.label.textColor = self.offSelectionTextColour
             self.imageView.image = self.offSelectionImage
         }
